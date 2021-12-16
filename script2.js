@@ -1,6 +1,6 @@
 const fetch = require('isomorphic-fetch');
 
-const getPeople = fetch => {
+const getPeoplePromise = fetch => {
     return fetch('https://swapi.co/api/people')
     .then(response => response.json())
     .then(data => {
@@ -11,6 +11,15 @@ const getPeople = fetch => {
         };
     })
     .catch(err => console.log('Error here: ' + err))
+};
+
+const getPeople = async (fetch) => {
+    const getRequest = await fetch('https://swapi.co/api/people')
+    const data = await getRequest.json()
+    return {
+        count: data.count,
+        results: data.results
+    };
 };
 
 getPeople(fetch);
