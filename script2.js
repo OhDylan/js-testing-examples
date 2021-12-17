@@ -10,12 +10,12 @@ const getPeoplePromise = fetch => {
             results: data.results
         };
     })
-    .catch(err => console.log('Error here: ' + err))
 };
 
 const getPeople = async (fetch) => {
-    const getRequest = await fetch('https://swapi.co/api/people')
-    const data = await getRequest.json()
+    const getRequest = await fetch('https://swapi.co/api/people');
+    const data = await getRequest.json();
+    console.log(data)
     return {
         count: data.count,
         results: data.results
